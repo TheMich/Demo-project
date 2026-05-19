@@ -4,14 +4,13 @@ using UnityEngine;
 public class EnemyBehaviour : MonoBehaviour
 {
     public float speed;
-    public GameObject player;
 
-    private Rigidbody thisRigidBody;
+    private Rigidbody m_thisRigidBody;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        thisRigidBody = GetComponent<Rigidbody>();
+        m_thisRigidBody = GetComponent<Rigidbody>();
     }
 
     // Update is called once per frame
@@ -19,8 +18,22 @@ public class EnemyBehaviour : MonoBehaviour
     {
         //var rigidBody = GetComponent<Rigidbody>();
         // rigidBody.velocity = vector going towards the player
-        var directionToPlayer = player.transform.position - transform.position;
-        thisRigidBody.linearVelocity = speed * directionToPlayer.normalized;
+        if (References.thePlayer)
+        {
+            var directionToPlayer = References.thePlayer.transform.position - transform.position;
+            m_thisRigidBody.linearVelocity = speed * directionToPlayer.normalized; 
+        }
 
+    }
+    private void OnCollisionEnter(Collision thisCollision)
+    {
+        var theirGameObject = thisCollision.gameObject;
+        if (theirGameObject.GetComponent<PlayerBehaviour>())
+        {
+            if (theirGameObject.GetComponent<HealthSystem>() is var theirHealth && theirHealth)
+            {
+                theirHealth.TakeDamage(1);
+            }
+        }
     }
 }
