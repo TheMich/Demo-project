@@ -13,8 +13,8 @@ GameObject:
   - component: {fileID: 4795277882475056076}
   - component: {fileID: 8961368309281532031}
   - component: {fileID: 6627875945984715350}
-  - component: {fileID: 1939245516170739319}
   - component: {fileID: 3058041145676987122}
+  - component: {fileID: 1939245516170739319}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Untagged
@@ -130,6 +130,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: '::'
   speed: 8
+--- !u!114 &3058041145676987122
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7088803532102261989}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ce51174e8fabbb540a2f1ad6d1b041e6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::HealthSystem
+  maxHealth: 2
+  healthBarPrefab: {fileID: 1141931120786129370, guid: 31d106e249a8b5f4584579f962ca93de, type: 3}
 --- !u!54 &1939245516170739319
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -157,16 +171,3 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &3058041145676987122
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7088803532102261989}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ce51174e8fabbb540a2f1ad6d1b041e6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::HealthSystem
-  health: 2

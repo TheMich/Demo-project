@@ -12,12 +12,16 @@ public class PlayerBehaviour : MonoBehaviour
 
     private float m_secondsSinceLastShot;
 
+    private void Awake()
+    {
+        References.thePlayer = gameObject;
+    }
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         m_secondsSinceLastShot = secondsBetweenShots;
         m_thisRigidBody = GetComponent<Rigidbody>();
-        References.thePlayer = gameObject;
     }
 
     // Update is called once per frame
