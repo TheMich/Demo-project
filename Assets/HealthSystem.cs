@@ -3,9 +3,9 @@ using UnityEngine.Serialization;
 
 public class HealthSystem : MonoBehaviour
 {
-    [FormerlySerializedAs("health")]
     public float maxHealth;
     public GameObject healthBarPrefab;
+    public GameObject deathEffectPrefab;
 
     private HealthBar m_healthBar;
     private static readonly float m_healthBarOffset = 2;
@@ -16,8 +16,17 @@ public class HealthSystem : MonoBehaviour
         m_currentHealth -= damageAmount;
         if (m_currentHealth <= 0)
         {
+            if (deathEffectPrefab)
+            {
+                ShowDeathEffect(deathEffectPrefab);
+            }
             Destroy(gameObject);
         }
+    }
+
+    private void ShowDeathEffect(GameObject deathEffect)
+    {
+        Instantiate(deathEffect, transform.position, transform.rotation);
     }
 
     private void OnDestroy()

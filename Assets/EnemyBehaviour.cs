@@ -32,7 +32,7 @@ public class EnemyBehaviour : MonoBehaviour
         {
             if (theirGameObject.GetComponent<HealthSystem>() is var theirHealth && theirHealth)
             {
-                theirHealth.TakeDamage(1);
+                theirHealth.TakeDamage(1); //TODO de-magic
             }
         }
     }
