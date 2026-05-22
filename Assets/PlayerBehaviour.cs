@@ -6,11 +6,10 @@ public class PlayerBehaviour : MonoBehaviour
 
     public float playerSpeed;
     public float secondsBetweenShots;
-    public GameObject bulletPrefab;
+    public WeaponBehaviour myWeapon;
 
     private Rigidbody m_thisRigidBody;
 
-    private float m_secondsSinceLastShot;
 
     private void Awake()
     {
@@ -20,7 +19,6 @@ public class PlayerBehaviour : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        m_secondsSinceLastShot = secondsBetweenShots;
         m_thisRigidBody = GetComponent<Rigidbody>();
     }
 
@@ -38,12 +36,11 @@ public class PlayerBehaviour : MonoBehaviour
         transform.LookAt(lookAtPosition);
 
         // Firing
-        m_secondsSinceLastShot += Time.deltaTime;
 
-        if (Input.GetButton("Fire1") && m_secondsSinceLastShot >= secondsBetweenShots)
+        if (Input.GetButton("Fire1"))
         {
-            m_secondsSinceLastShot = 0;
-            Instantiate(bulletPrefab, transform.position + transform.forward, transform.rotation); 
+            // Tell weapon to fire
+            myWeapon.Fire(cursorPosition);
         }
     }
 

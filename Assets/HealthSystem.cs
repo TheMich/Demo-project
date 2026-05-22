@@ -13,14 +13,17 @@ public class HealthSystem : MonoBehaviour
 
     public void TakeDamage(float damageAmount)
     {
-        m_currentHealth -= damageAmount;
-        if (m_currentHealth <= 0)
+        if (m_currentHealth > 0)
         {
-            if (deathEffectPrefab)
+            m_currentHealth -= damageAmount;
+            if (m_currentHealth <= 0)
             {
-                ShowDeathEffect(deathEffectPrefab);
-            }
-            Destroy(gameObject);
+                if (deathEffectPrefab)
+                {
+                    ShowDeathEffect(deathEffectPrefab);
+                }
+                Destroy(gameObject);
+            } 
         }
     }
 
