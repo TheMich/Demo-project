@@ -43,12 +43,9 @@ public class WeaponBehaviour : MonoBehaviour
                 transform.position + transform.forward, transform.rotation);
                 newBullet.name = "Bullet " + i.ToString();
 
-                Vector3 alteredPosition = new(
-                    targetPosition.x + Random.Range(-bulletSpread, bulletSpread),
-                    targetPosition.y,
-                    targetPosition.z + Random.Range(-bulletSpread, bulletSpread));
-                //alteredPosition.x += Random.Range(-bulletSpread, bulletSpread);
-                //alteredPosition.z += Random.Range(-bulletSpread, bulletSpread);
+                Vector3 alteredPosition = targetPosition;
+                alteredPosition.x += Random.Range(-bulletSpread, bulletSpread);
+                alteredPosition.z += Random.Range(-bulletSpread, bulletSpread);
 
                 newBullet.transform.LookAt(alteredPosition);
             }

@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody))]
@@ -5,9 +6,9 @@ public class PlayerBehaviour : MonoBehaviour
 {
 
     public float playerSpeed;
-    public float secondsBetweenShots;
-    public WeaponBehaviour myWeapon;
-
+    public List<WeaponBehaviour> weapons = new();
+    
+    private int m_selectedWeaponIndex = 0;
     private Rigidbody m_thisRigidBody;
 
 
@@ -36,12 +37,31 @@ public class PlayerBehaviour : MonoBehaviour
         transform.LookAt(lookAtPosition);
 
         // Firing
-
-        if (Input.GetButton("Fire1"))
+        // need to check we have at least one weapon
+        if (Input.GetButton("Fire1") && weapons.Count > 0)
         {
-            // Tell weapon to fire
-            myWeapon.Fire(cursorPosition);
+           weapons[m_selectedWeaponIndex].Fire(cursorPosition);
         }
+
+        // Change selected weapon
+        if (Input.GetButtonDown("Fire2"))
+        {
+            ChangeWeaponIndex(m_selectedWeaponIndex + 1);
+        }
+    }
+
+    
+    private void ChangeWeaponIndex(int index)
+    {
+        // original tutorial code used a for-loop to check for activation, but we can simply use an additional index instead
+        var oldIndex = m_selectedWeaponIndex;
+        m_selectedWeaponIndex = index;
+        if (m_selectedWeaponIndex >= weapons.Count)
+        {
+            m_selectedWeaponIndex = 0;
+        }
+        weapons[oldIndex].gameObject.SetActive(false);
+        weapons[m_selectedWeaponIndex].gameObject.SetActive(true);
     }
 
     private Vector3 GetCursorPosition(Vector3 relativePosition)
@@ -50,5 +70,22 @@ public class PlayerBehaviour : MonoBehaviour
         Plane playerPlane = new(Vector3.up, relativePosition);
         playerPlane.Raycast(rayFromCameraToCursor, out float distanceFromCamera);
         return rayFromCameraToCursor.GetPoint(distanceFromCamera);
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        var weapon = other.GetComponentInParent<WeaponBehaviour>();
+        if (weapon)
+        {
+            PickUp(weapon);
+        }
+    }
+
+    private void PickUp(WeaponBehaviour weapon)
+    {
+        weapons.Add(weapon);
+        weapon.transform.SetPositionAndRotation(transform.position, transform.rotation);
+        weapon.transform.SetParent(transform);
+        ChangeWeaponIndex(weapons.Count - 1);
     }
 }
