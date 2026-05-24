@@ -38,15 +38,18 @@ public class PlayerBehaviour : MonoBehaviour
 
         // Firing
         // need to check we have at least one weapon
-        if (Input.GetButton("Fire1") && weapons.Count > 0)
+        if (weapons.Count > 0)
         {
-           weapons[m_selectedWeaponIndex].Fire(cursorPosition);
-        }
+            if (Input.GetButton("Fire1"))
+            {
+                weapons[m_selectedWeaponIndex].Fire(cursorPosition);
+            }
 
-        // Change selected weapon
-        if (Input.GetButtonDown("Fire2"))
-        {
-            ChangeWeaponIndex(m_selectedWeaponIndex + 1);
+            // Change selected weapon
+            if (Input.GetButtonDown("Fire2"))
+            {
+                ChangeWeaponIndex(m_selectedWeaponIndex + 1);
+            } 
         }
     }
 
