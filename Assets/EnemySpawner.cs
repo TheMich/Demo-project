@@ -6,8 +6,14 @@ public class EnemySpawner : MonoBehaviour
     public GameObject enemyPrefab;
     public float secondsBetweenSpawns;
     public GameObject spawnPoint;
+    public bool activated;
 
     private float m_secondsSinceLastSpawn;
+
+    private void Awake()
+    {
+        References.spawner = this;
+    }
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -20,7 +26,7 @@ public class EnemySpawner : MonoBehaviour
     void FixedUpdate()
     {
         m_secondsSinceLastSpawn += Time.fixedDeltaTime;
-        if (m_secondsSinceLastSpawn >= secondsBetweenSpawns)
+        if (activated && m_secondsSinceLastSpawn >= secondsBetweenSpawns)
         {
             SpawnEnemy();
             m_secondsSinceLastSpawn = 0;

@@ -1,69 +1,55 @@
+using System;
 using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody))]
 public class EnemyBehaviour : MonoBehaviour
 {
     public float speed;
-    public float visionRange;
-    public float visionConeAngle;
-    public bool alerted;
-    public float turnSpeed;
-    public Light myLight;
 
-    private Rigidbody m_thisRigidBody;
+    protected Rigidbody m_thisRigidBody;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    protected virtual void Start()
     {
         m_thisRigidBody = GetComponent<Rigidbody>();
-        SetAlert(false);
     }
 
     // Update is called once per frame
-    void Update()
+    protected virtual void Update()
+    {
+        ChasePlayer();
+    }
+
+    protected void ChasePlayer()
+    {
+        if (GetPlayerPositionAndDirection() is var (playerPosition, directionToPlayer)) 
+        {
+            //var playerPosition = References.thePlayer.transform.position;
+            //var directionToPlayer = playerPosition - transform.position;
+
+            // Follow the player
+
+            m_thisRigidBody.linearVelocity = speed * directionToPlayer.normalized;
+            Vector3 playerPositionAtOurHeight = new(playerPosition.x, transform.position.y, playerPosition.z);
+            transform.LookAt(playerPositionAtOurHeight);
+
+        }
+    }
+
+    protected (Vector3, Vector3)? GetPlayerPositionAndDirection()
     {
         if (References.thePlayer)
         {
             var playerPosition = References.thePlayer.transform.position;
             var directionToPlayer = playerPosition - transform.position;
-            //if (myLight)
-            //{
-            //    myLight.color = Color.white;
-            //}
-
-            // Follow the player
-            if (alerted)
-            {
-                m_thisRigidBody.linearVelocity = speed * directionToPlayer.normalized;
-                Vector3 playerPositionAtOurHeight = new(playerPosition.x, transform.position.y, playerPosition.z);
-                transform.LookAt(playerPositionAtOurHeight); 
-            } else
-            {
-                // Rotate and patrol
-                var lateralOffset = Time.deltaTime * turnSpeed * transform.right;
-                transform.LookAt(transform.position + transform.forward + lateralOffset);
-                m_thisRigidBody.linearVelocity = speed * transform.forward;
-
-                // Check if we can see the player
-                if(Vector3.Distance(transform.position, playerPosition) <= visionRange
-                    && Vector3.Angle(transform.forward, directionToPlayer) <= visionConeAngle)
-                {
-                    SetAlert(true);
-                }
-            }
-        }
-    }
-
-    private void SetAlert(bool alert)
-    {
-        alerted = alert;
-        if (myLight)
+            return (playerPosition, directionToPlayer);
+        } else
         {
-            myLight.color = alert ? Color.red : Color.white;
+            return null;
         }
     }
 
-    private void OnCollisionEnter(Collision thisCollision)
+    protected void OnCollisionEnter(Collision thisCollision)
     {
         var theirGameObject = thisCollision.gameObject;
         if (theirGameObject.GetComponent<PlayerBehaviour>())

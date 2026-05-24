@@ -137,8 +137,8 @@ GameObject:
   m_Component:
   - component: {fileID: 4329402472378058186}
   - component: {fileID: 6977414710713705188}
-  - component: {fileID: 3974488165000761431}
   - component: {fileID: 6936366185751284069}
+  - component: {fileID: 1393171651999836785}
   m_Layer: 0
   m_Name: Guard
   m_TagString: Untagged
@@ -190,24 +190,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 84
   m_CollisionDetection: 0
---- !u!114 &3974488165000761431
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2742750655051787725}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 469022659c17c744998f10f1aca41c4b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::EnemyBehaviour
-  speed: 2
-  visionRange: 8.5
-  visionConeAngle: 38
-  alerted: 0
-  turnSpeed: 1
-  myLight: {fileID: 5222769321206189840}
 --- !u!114 &6936366185751284069
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -223,6 +205,24 @@ MonoBehaviour:
   maxHealth: 10
   healthBarPrefab: {fileID: 1141931120786129370, guid: 31d106e249a8b5f4584579f962ca93de, type: 3}
   deathEffectPrefab: {fileID: 0}
+--- !u!114 &1393171651999836785
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2742750655051787725}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dc40985b550ba5a4ab3580b92f368ba1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::GuardBehaviour
+  speed: 0
+  visionRange: 8
+  visionConeAngle: 35
+  alerted: 0
+  turnSpeed: 0
+  myLight: {fileID: 5222769321206189840}
 --- !u!1 &6043080146339948708
 GameObject:
   m_ObjectHideFlags: 0

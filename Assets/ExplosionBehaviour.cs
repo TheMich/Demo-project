@@ -29,7 +29,7 @@ public class ExplosionBehaviour : MonoBehaviour
 
     private void OnTriggerEnter(Collider victim)
     {
-        if (victim.gameObject.GetComponent<HealthSystem>() is var theirHealth && theirHealth)
+        if (victim.gameObject.GetComponent<HealthSystem>() is var theirHealth and not null)
         {
             theirHealth.TakeDamage(10); // TODO de-magic
         }

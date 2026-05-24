@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6613321122145724594}
   - component: {fileID: 3616933146937079760}
+  - component: {fileID: 3131883717957233862}
   m_Layer: 0
   m_Name: Weapon
   m_TagString: Untagged
@@ -49,6 +50,27 @@ MonoBehaviour:
   accuracy: 1000
   numberOfProjectiles: 1
   bulletPrefab: {fileID: 1021601657166478989, guid: 8a5f2783635688242b2b17c632f517aa, type: 3}
+--- !u!135 &3131883717957233862
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 51692258777294307}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Radius: 0.6
+  m_Center: {x: 0, y: 0, z: 1.059}
 --- !u!1 &4991137039105700947
 GameObject:
   m_ObjectHideFlags: 0
@@ -60,7 +82,6 @@ GameObject:
   - component: {fileID: 6687924956462178221}
   - component: {fileID: 4026685139522621519}
   - component: {fileID: 962451619029413396}
-  - component: {fileID: 5413923957107358564}
   m_Layer: 0
   m_Name: Cylinder
   m_TagString: Untagged
@@ -140,26 +161,3 @@ MeshRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!136 &5413923957107358564
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4991137039105700947}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 1
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.50000024
-  m_Height: 2.0000005
-  m_Direction: 1
-  m_Center: {x: 0.000000059604645, y: 0.00000047683716, z: -0.00000008940699}
