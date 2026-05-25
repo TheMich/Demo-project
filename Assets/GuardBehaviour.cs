@@ -25,7 +25,8 @@ public class GuardBehaviour : EnemyBehaviour
             if (alerted)
             {
                 ChasePlayer();
-            } else
+            }
+            else
             {
                 // Rotate and patrol
                 var lateralOffset = Time.deltaTime * turnSpeed * transform.right;
@@ -33,8 +34,9 @@ public class GuardBehaviour : EnemyBehaviour
                 m_thisRigidBody.linearVelocity = speed * transform.forward;
 
                 // Check if we can see the player
-                if(Vector3.Distance(transform.position, playerPosition) <= visionRange
-                    && Vector3.Angle(transform.forward, directionToPlayer) <= visionConeAngle)
+                if (Vector3.Distance(transform.position, playerPosition) <= visionRange
+                    && Vector3.Angle(transform.forward, directionToPlayer) <= visionConeAngle
+                    && !Physics.Raycast(transform.position, directionToPlayer, directionToPlayer.magnitude, References.wallsLayer)) // if we don't hit a wall
                 {
                     SetAlert(true);
                 }

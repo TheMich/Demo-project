@@ -11,11 +11,14 @@ public class BulletBehaviour : MonoBehaviour
     void Start()
     {
         var rigidBody = GetComponent<Rigidbody>();
-        rigidBody.linearVelocity = bulletSpeed * transform.forward;
+        if (rigidBody)
+        {
+            rigidBody.linearVelocity = bulletSpeed * transform.forward; 
+        }
     }
 
     // Update is called once per frame
-    void Update()
+    protected virtual void Update()
     {
         secondsUntilDestroyed -= Time.deltaTime;
 

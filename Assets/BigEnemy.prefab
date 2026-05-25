@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 9223353966385711509}
   - component: {fileID: 9086135797471201625}
   - component: {fileID: 92457803909006872}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: BigEnemy
   m_TagString: Untagged
   m_Icon: {fileID: 0}

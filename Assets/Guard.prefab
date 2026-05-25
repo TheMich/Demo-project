@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 1021637795006541151}
   - component: {fileID: 5222769321206189840}
   - component: {fileID: 6067434117431317602}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Spot Light
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -139,7 +139,7 @@ GameObject:
   - component: {fileID: 6977414710713705188}
   - component: {fileID: 6936366185751284069}
   - component: {fileID: 1393171651999836785}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Guard
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -221,7 +221,7 @@ MonoBehaviour:
   visionRange: 8
   visionConeAngle: 35
   alerted: 0
-  turnSpeed: 0
+  turnSpeed: 1
   myLight: {fileID: 5222769321206189840}
 --- !u!1 &6043080146339948708
 GameObject:
@@ -235,7 +235,7 @@ GameObject:
   - component: {fileID: 1179945737207890693}
   - component: {fileID: 6576601088736681161}
   - component: {fileID: 2016369042344015844}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Cylinder
   m_TagString: Untagged
   m_Icon: {fileID: 0}

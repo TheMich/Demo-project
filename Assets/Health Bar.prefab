@@ -90,6 +90,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: '::'
   filledPart: {fileID: 903282588695898639}
+  background: {fileID: 2864957007012824091}
 --- !u!1 &8066147880224189970
 GameObject:
   m_ObjectHideFlags: 0

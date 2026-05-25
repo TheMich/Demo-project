@@ -31,6 +31,7 @@ public class WeaponBehaviour : MonoBehaviour
         {
             m_secondsSinceLastShot = 0;
 
+            References.spawner.activated = true;
 
             // offset depending on weapon accuracy
             var targetDistance = Vector3.Distance(transform.position, targetPosition);
