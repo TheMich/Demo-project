@@ -1,5 +1,4 @@
 using UnityEngine;
-using UnityEngine.Rendering.Universal.Internal;
 
 public class RailgunBeamBehaviour : BulletBehaviour
 {
@@ -32,7 +31,7 @@ public class RailgunBeamBehaviour : BulletBehaviour
     // Update is called once per frame
     override protected void Update()
     {
-        myBeam.widthMultiplier *= 1 - Time.deltaTime;
+        myBeam.endColor = Color.Lerp(Color.clear, myBeam.endColor, 0.95f);
         base.Update();
     }
 }

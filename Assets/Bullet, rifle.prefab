@@ -128,7 +128,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: '::'
   bulletSpeed: 60
-  secondsUntilDestroyed: 4
+  lifetimeInSeconds: 2
   damage: 3
 --- !u!54 &4249565279433083398
 Rigidbody:

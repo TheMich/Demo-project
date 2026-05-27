@@ -1,21 +1,23 @@
 using Unity.VisualScripting;
 using UnityEngine;
 
+[RequireComponent(typeof(AudioSource))]
 public class WeaponBehaviour : MonoBehaviour
 {
     public float secondsBetweenShots;
     public float accuracy;
     public int numberOfProjectiles;
-    
     public GameObject bulletPrefab;
+    public float kickAmount;
 
     private float m_secondsSinceLastShot;
-
+    private AudioSource m_audioSource;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         m_secondsSinceLastShot = secondsBetweenShots;
+        m_audioSource = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -30,9 +32,13 @@ public class WeaponBehaviour : MonoBehaviour
         if (m_secondsSinceLastShot >= secondsBetweenShots)
         {
             m_secondsSinceLastShot = 0;
+            m_audioSource.Play();
+            References.screenshake.joltVector = - (kickAmount * transform.forward);
 
-            References.spawner.activated = true;
-
+            if (References.spawner)
+            {
+                References.spawner.activated = true;
+            }
             // offset depending on weapon accuracy
             var targetDistance = Vector3.Distance(transform.position, targetPosition);
             var bulletSpread = targetDistance / accuracy; // TODO safeguard against 0 accuracy

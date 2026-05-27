@@ -3,14 +3,16 @@ using UnityEngine;
 public class ExplosionBehaviour : MonoBehaviour
 {
     public float secondsToExist;
-    private float m_secondsWeHaveBeenAlive;
+    public GameObject soundObject;
 
+    private float m_secondsWeHaveBeenAlive;
     private readonly Vector3 m_maxScale = Vector3.one * 5;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         m_secondsWeHaveBeenAlive = 0;
+        Instantiate(soundObject, transform.position, transform.rotation);
     }
 
     // Update is called once per frame

@@ -1,11 +1,26 @@
+using System.Runtime.CompilerServices;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 [RequireComponent(typeof(Rigidbody))]
 public class BulletBehaviour : MonoBehaviour
 {
     public float bulletSpeed;
-    public float secondsUntilDestroyed;
+    public float lifetimeInSeconds;
     public float damage;
+
+    private float m_secondsUntilDestroyed;
+
+    protected float LifetimeNormalized()
+    {
+         return lifetimeInSeconds != 0 ? m_secondsUntilDestroyed / lifetimeInSeconds : 0;
+    }
+
+    private void Awake()
+    {
+
+        m_secondsUntilDestroyed = lifetimeInSeconds;
+    }
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -20,16 +35,16 @@ public class BulletBehaviour : MonoBehaviour
     // Update is called once per frame
     protected virtual void Update()
     {
-        secondsUntilDestroyed -= Time.deltaTime;
+        m_secondsUntilDestroyed -= Time.deltaTime;
 
 
-        if (secondsUntilDestroyed < 1)
+        if (m_secondsUntilDestroyed < 1)
         {
-            transform.localScale *= secondsUntilDestroyed;
+            transform.localScale *= m_secondsUntilDestroyed;
         }
             
 
-        if (secondsUntilDestroyed < 0)
+        if (m_secondsUntilDestroyed < 0)
         {
             Destroy(gameObject);
         }

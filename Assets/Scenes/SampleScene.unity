@@ -379,6 +379,7 @@ GameObject:
   - component: {fileID: 330585545}
   - component: {fileID: 330585544}
   - component: {fileID: 330585547}
+  - component: {fileID: 330585548}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -504,6 +505,21 @@ MonoBehaviour:
     m_VarianceClampScale: 0.9
     m_ContrastAdaptiveSharpening: 0
   m_Version: 2
+--- !u!114 &330585548
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 330585543}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fa51458f11b75ac4b92685412d217338, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: '::'
+  joltVector: {x: 0, y: 0, z: 0}
+  joltDecayFactor: 0.7
+  maxMoveSpeed: 200
 --- !u!1 &360038661
 GameObject:
   m_ObjectHideFlags: 0
@@ -633,6 +649,10 @@ PrefabInstance:
       value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 3616933146937079760, guid: 38f1672883d1f2948868cbf67cf2934b, type: 3}
+      propertyPath: kickAmount
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 3616933146937079760, guid: 38f1672883d1f2948868cbf67cf2934b, type: 3}
       propertyPath: numberOfProjectiles
       value: 10
       objectReference: {fileID: 0}
@@ -680,6 +700,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6670896153985213957, guid: 38f1672883d1f2948868cbf67cf2934b, type: 3}
+      propertyPath: m_Resource
+      value: 
+      objectReference: {fileID: 8300000, guid: a63bf3d634b2e424b9bad1b1c7a21a82, type: 3}
     - target: {fileID: 6687924956462178221, guid: 38f1672883d1f2948868cbf67cf2934b, type: 3}
       propertyPath: m_LocalScale.x
       value: 0.42608288
@@ -1677,6 +1701,10 @@ PrefabInstance:
       value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 3616933146937079760, guid: 38f1672883d1f2948868cbf67cf2934b, type: 3}
+      propertyPath: kickAmount
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3616933146937079760, guid: 38f1672883d1f2948868cbf67cf2934b, type: 3}
       propertyPath: secondsBetweenShots
       value: 0.05
       objectReference: {fileID: 0}
@@ -1720,6 +1748,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6670896153985213957, guid: 38f1672883d1f2948868cbf67cf2934b, type: 3}
+      propertyPath: m_Resource
+      value: 
+      objectReference: {fileID: 8300000, guid: 57efc142a14dd9640b87f5e78e36a4e6, type: 3}
     - target: {fileID: 6687924956462178221, guid: 38f1672883d1f2948868cbf67cf2934b, type: 3}
       propertyPath: m_LocalScale.x
       value: 0.1589413
@@ -1864,6 +1896,14 @@ PrefabInstance:
     - target: {fileID: 1021601657166478989, guid: 35ccb77412288c545b0b5ddb784c0834, type: 3}
       propertyPath: m_Name
       value: Railgun beam
+      objectReference: {fileID: 0}
+    - target: {fileID: 1021601657166478989, guid: 35ccb77412288c545b0b5ddb784c0834, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1099673690057092327, guid: 35ccb77412288c545b0b5ddb784c0834, type: 3}
+      propertyPath: lifetimeInSeconds
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 4414260396118817208, guid: 35ccb77412288c545b0b5ddb784c0834, type: 3}
       propertyPath: m_LocalScale.x
@@ -2049,6 +2089,10 @@ PrefabInstance:
       value: Railgun
       objectReference: {fileID: 0}
     - target: {fileID: 3616933146937079760, guid: 38f1672883d1f2948868cbf67cf2934b, type: 3}
+      propertyPath: kickAmount
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 3616933146937079760, guid: 38f1672883d1f2948868cbf67cf2934b, type: 3}
       propertyPath: bulletPrefab
       value: 
       objectReference: {fileID: 1021601657166478989, guid: 35ccb77412288c545b0b5ddb784c0834, type: 3}
@@ -2096,6 +2140,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6670896153985213957, guid: 38f1672883d1f2948868cbf67cf2934b, type: 3}
+      propertyPath: m_Resource
+      value: 
+      objectReference: {fileID: 8300000, guid: 94329d0e0a0ba324b999409238a5f59f, type: 3}
     - target: {fileID: 6687924956462178221, guid: 38f1672883d1f2948868cbf67cf2934b, type: 3}
       propertyPath: m_LocalScale.y
       value: 1.1237212
@@ -2549,6 +2597,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Rifle
       objectReference: {fileID: 0}
+    - target: {fileID: 51692258777294307, guid: 38f1672883d1f2948868cbf67cf2934b, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3616933146937079760, guid: 38f1672883d1f2948868cbf67cf2934b, type: 3}
       propertyPath: bulletPrefab
       value: 
@@ -2593,6 +2645,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6670896153985213957, guid: 38f1672883d1f2948868cbf67cf2934b, type: 3}
+      propertyPath: m_Resource
+      value: 
+      objectReference: {fileID: 8300000, guid: 57efc142a14dd9640b87f5e78e36a4e6, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
