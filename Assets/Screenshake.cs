@@ -3,10 +3,15 @@ using UnityEngine;
 public class Screenshake : MonoBehaviour
 {
     public Vector3 joltVector;
+    public float shakeAmount;
+
     public float joltDecayFactor;
+    public float shakeDecayFactor;
+    
     public float maxMoveSpeed;
 
     private Vector3 m_normalPosition;
+    private Vector3 m_desiredPosition;
 
     private void Awake()
     {
@@ -22,7 +27,18 @@ public class Screenshake : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.position = Vector3.MoveTowards(m_normalPosition, m_normalPosition + joltVector, maxMoveSpeed * Time.deltaTime);
+
+        var shakeVector = new Vector3(GetRandomShakeAmount(), GetRandomShakeAmount(), GetRandomShakeAmount());
+        m_desiredPosition = m_normalPosition + joltVector + shakeVector;
+
+        // set our position to jolted position
+        transform.position = Vector3.MoveTowards(m_normalPosition, m_desiredPosition, maxMoveSpeed * Time.deltaTime);
         joltVector *= joltDecayFactor;
+        shakeAmount *= shakeDecayFactor;
+    }
+
+    float GetRandomShakeAmount()
+    {
+        return Random.Range(-shakeAmount, shakeAmount);
     }
 }

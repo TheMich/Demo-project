@@ -144,7 +144,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::HealthSystem
   maxHealth: 2
   healthBarPrefab: {fileID: 1141931120786129370, guid: 31d106e249a8b5f4584579f962ca93de, type: 3}
-  deathEffectPrefab: {fileID: 8576699904422422840, guid: 7942c8ccd55b61e40aa8dfedc6d11dd8, type: 3}
+  deathEffectPrefab: {fileID: 4228807629156005209, guid: b1600085b7c0c8a4bbe45c0aa786a49e, type: 3}
 --- !u!54 &1939245516170739319
 Rigidbody:
   m_ObjectHideFlags: 0
