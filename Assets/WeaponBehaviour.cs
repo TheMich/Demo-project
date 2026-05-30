@@ -33,7 +33,7 @@ public class WeaponBehaviour : MonoBehaviour
         {
             m_secondsSinceLastShot = 0;
             m_audioSource.Play();
-            References.screenshake.joltVector = - (kickAmount * transform.forward);
+            References.screenshake.joltVector = kickAmount * transform.forward;
 
             if (References.spawner)
             {
