@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 3616933146937079760}
   - component: {fileID: 3131883717957233862}
   - component: {fileID: 6670896153985213957}
+  - component: {fileID: -3723166499392874329}
   m_Layer: 0
   m_Name: Weapon
   m_TagString: Untagged
@@ -51,6 +52,7 @@ MonoBehaviour:
   accuracy: 1000
   numberOfProjectiles: 1
   bulletPrefab: {fileID: 1021601657166478989, guid: 8a5f2783635688242b2b17c632f517aa, type: 3}
+  kickAmount: 0
 --- !u!135 &3131883717957233862
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -169,6 +171,26 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &-3723166499392874329
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 51692258777294307}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e3fdca004f2d45fe8abbed571a8abd5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.AI.Navigation::Unity.AI.Navigation.NavMeshModifier
+  m_SerializedVersion: 0
+  m_OverrideArea: 0
+  m_Area: 0
+  m_OverrideGenerateLinks: 0
+  m_GenerateLinks: 0
+  m_IgnoreFromBuild: 1
+  m_ApplyToChildren: 1
+  m_AffectedAgents: ffffffff
 --- !u!1 &4991137039105700947
 GameObject:
   m_ObjectHideFlags: 0

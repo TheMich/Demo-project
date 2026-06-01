@@ -139,6 +139,8 @@ GameObject:
   - component: {fileID: 6977414710713705188}
   - component: {fileID: 6936366185751284069}
   - component: {fileID: 1393171651999836785}
+  - component: {fileID: -8340286466659671434}
+  - component: {fileID: 22843917994871052}
   m_Layer: 8
   m_Name: Guard
   m_TagString: Untagged
@@ -186,7 +188,7 @@ Rigidbody:
   m_ImplicitCom: 1
   m_ImplicitTensor: 1
   m_UseGravity: 1
-  m_IsKinematic: 0
+  m_IsKinematic: 1
   m_Interpolate: 0
   m_Constraints: 84
   m_CollisionDetection: 0
@@ -217,12 +219,54 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dc40985b550ba5a4ab3580b92f368ba1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GuardBehaviour
-  speed: 0
+  speed: 2
   visionRange: 8
   visionConeAngle: 35
   alerted: 0
   turnSpeed: 1
   myLight: {fileID: 5222769321206189840}
+--- !u!114 &-8340286466659671434
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2742750655051787725}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e3fdca004f2d45fe8abbed571a8abd5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.AI.Navigation::Unity.AI.Navigation.NavMeshModifier
+  m_SerializedVersion: 0
+  m_OverrideArea: 0
+  m_Area: 0
+  m_OverrideGenerateLinks: 0
+  m_GenerateLinks: 0
+  m_IgnoreFromBuild: 1
+  m_ApplyToChildren: 1
+  m_AffectedAgents: ffffffff
+--- !u!195 &22843917994871052
+NavMeshAgent:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2742750655051787725}
+  m_Enabled: 1
+  m_AgentTypeID: 0
+  m_Radius: 0.5
+  m_Speed: 3.5
+  m_Acceleration: 8
+  avoidancePriority: 50
+  m_AngularSpeed: 120
+  m_StoppingDistance: 0
+  m_AutoTraverseOffMeshLink: 1
+  m_AutoBraking: 1
+  m_AutoRepath: 1
+  m_Height: 2
+  m_BaseOffset: 0
+  m_WalkableMask: 4294967295
+  m_ObstacleAvoidanceType: 4
 --- !u!1 &6043080146339948708
 GameObject:
   m_ObjectHideFlags: 0

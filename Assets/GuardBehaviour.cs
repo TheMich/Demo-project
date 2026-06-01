@@ -14,6 +14,13 @@ public class GuardBehaviour : EnemyBehaviour
     {
         base.Start();
         SetAlert(false);
+        GoToRandomNavPoint();
+    }
+
+    void GoToRandomNavPoint()
+    {
+        int randomNavPointIndex = Random.Range(0, References.navPoints.Count);
+        m_navAgent.destination = References.navPoints[randomNavPointIndex].transform.position;
     }
 
     // Update is called once per frame
@@ -28,6 +35,12 @@ public class GuardBehaviour : EnemyBehaviour
             }
             else
             {
+
+                if (m_navAgent.remainingDistance < 0.5f)
+                {
+                    GoToRandomNavPoint();
+                }
+
                 // Rotate and patrol
                 var lateralOffset = Time.deltaTime * turnSpeed * transform.right;
                 transform.LookAt(transform.position + transform.forward + lateralOffset);
