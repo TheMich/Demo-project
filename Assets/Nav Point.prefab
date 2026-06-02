@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 9201564084228774469}
   - component: {fileID: 8515278217756494759}
   - component: {fileID: 4577935639078788467}
+  - component: {fileID: 7203790902462334557}
   m_Layer: 0
   m_Name: Nav Point
   m_TagString: Untagged
@@ -103,3 +104,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 052c09388fbca81498110245a186fabf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
+--- !u!114 &7203790902462334557
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8756807048622753230}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e3fdca004f2d45fe8abbed571a8abd5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.AI.Navigation::Unity.AI.Navigation.NavMeshModifier
+  m_SerializedVersion: 0
+  m_OverrideArea: 0
+  m_Area: 0
+  m_OverrideGenerateLinks: 0
+  m_GenerateLinks: 0
+  m_IgnoreFromBuild: 1
+  m_ApplyToChildren: 1
+  m_AffectedAgents: ffffffff

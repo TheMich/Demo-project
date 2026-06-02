@@ -6,13 +6,19 @@ public class EnemySpawner : MonoBehaviour
     public GameObject enemyPrefab;
     public float secondsBetweenSpawns;
     public GameObject spawnPoint;
-    public bool activated;
+    public int enemiesToSpawn;
 
     private float m_secondsSinceLastSpawn;
+    private int m_spawnCount;
 
-    private void Awake()
+    private void OnEnable()
     {
-        References.spawner = this;
+        References.spawners.Add(this);
+    }
+
+    private void OnDisable()
+    {
+        References.spawners.Remove(this);
     }
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -26,10 +32,9 @@ public class EnemySpawner : MonoBehaviour
     void FixedUpdate()
     {
         m_secondsSinceLastSpawn += Time.fixedDeltaTime;
-        if (activated && m_secondsSinceLastSpawn >= secondsBetweenSpawns)
+        if (References.levelManager.alarmSounded && m_secondsSinceLastSpawn >= secondsBetweenSpawns && m_spawnCount < enemiesToSpawn)
         {
             SpawnEnemy();
-            m_secondsSinceLastSpawn = 0;
         }
     }
 
@@ -37,5 +42,7 @@ public class EnemySpawner : MonoBehaviour
     private void SpawnEnemy()
     {
         Instantiate(enemyPrefab, spawnPoint.transform.position, spawnPoint.transform.rotation);
+        m_spawnCount++;
+        m_secondsSinceLastSpawn = 0;
     }
 }

@@ -10,6 +10,16 @@ public class EnemyBehaviour : MonoBehaviour
     protected Rigidbody m_thisRigidBody;
     protected NavMeshAgent m_navAgent;
 
+    protected void OnEnable()
+    {
+        References.allEnemies.Add(this);
+    }
+
+    protected void OnDisable()
+    {
+        References.allEnemies.Remove(this);
+    }
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     protected virtual void Start()
     {

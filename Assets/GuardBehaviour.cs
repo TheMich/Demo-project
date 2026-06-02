@@ -64,9 +64,9 @@ public class GuardBehaviour : EnemyBehaviour
         {
             myLight.color = alert ? Color.red : Color.white;
         }
-        if (References.spawner is var spawner and not null)
+        if (References.levelManager is var manager and not null)
         {
-            spawner.activated = alert;
+            manager.alarmSounded = alert;
         }
     }
 }

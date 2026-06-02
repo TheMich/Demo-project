@@ -35,9 +35,9 @@ public class WeaponBehaviour : MonoBehaviour
             m_audioSource.Play();
             References.screenshake.joltVector = kickAmount * transform.forward;
 
-            if (References.spawner)
+            if (References.levelManager)
             {
-                References.spawner.activated = true;
+                References.levelManager.alarmSounded = true;
             }
             // offset depending on weapon accuracy
             var targetDistance = Vector3.Distance(transform.position, targetPosition);
