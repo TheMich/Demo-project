@@ -8,8 +8,10 @@ public class LevelManager : MonoBehaviour
     public bool alarmSounded;
     public SceneAsset nextLevel;
     public float graceTimeAtEndOfLevel;
+    public float secondsBeforeShowingDeathMenu;
     
     private float m_secondsBeforeNextLevel;
+    private bool m_shownDeathMenu = false;
 
     private void Awake()
     {
@@ -36,6 +38,16 @@ public class LevelManager : MonoBehaviour
         {
             // Reset the timer if an enemy spawns
             m_secondsBeforeNextLevel = graceTimeAtEndOfLevel;
+        }
+
+        if (!m_shownDeathMenu && !References.thePlayer)
+        {
+            secondsBeforeShowingDeathMenu -= Time.deltaTime;
+            if (secondsBeforeShowingDeathMenu <= 0)
+            {
+                m_shownDeathMenu = true;
+                References.canvas.ShowMainMenu();
+            }
         }
     }
 }

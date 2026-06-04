@@ -1,6 +1,4 @@
-using System.Runtime.CompilerServices;
 using UnityEngine;
-using UnityEngine.Serialization;
 
 [RequireComponent(typeof(Rigidbody))]
 public class BulletBehaviour : MonoBehaviour
@@ -13,7 +11,7 @@ public class BulletBehaviour : MonoBehaviour
 
     protected float LifetimeNormalized()
     {
-         return lifetimeInSeconds != 0 ? m_secondsUntilDestroyed / lifetimeInSeconds : 0;
+        return lifetimeInSeconds != 0 ? m_secondsUntilDestroyed / lifetimeInSeconds : 0;
     }
 
     private void Awake()
@@ -28,7 +26,7 @@ public class BulletBehaviour : MonoBehaviour
         var rigidBody = GetComponent<Rigidbody>();
         if (rigidBody)
         {
-            rigidBody.linearVelocity = bulletSpeed * transform.forward; 
+            rigidBody.linearVelocity = bulletSpeed * transform.forward;
         }
     }
 
@@ -42,7 +40,7 @@ public class BulletBehaviour : MonoBehaviour
         {
             transform.localScale *= m_secondsUntilDestroyed;
         }
-            
+
 
         if (m_secondsUntilDestroyed < 0)
         {
@@ -53,13 +51,12 @@ public class BulletBehaviour : MonoBehaviour
     private void OnCollisionEnter(Collision thisCollision)
     {
         var theirGameObject = thisCollision.gameObject;
-        if (theirGameObject.GetComponent<EnemyBehaviour>())
+
+        if (theirGameObject.GetComponent<HealthSystem>() is var theirHealth && theirHealth)
         {
-            if (theirGameObject.GetComponent<HealthSystem>() is var theirHealth && theirHealth)
-            {
-                theirHealth.TakeDamage(damage);
-            }
-            Destroy(gameObject);
+            theirHealth.TakeDamage(damage);
         }
+        Destroy(gameObject);
+
     }
 }

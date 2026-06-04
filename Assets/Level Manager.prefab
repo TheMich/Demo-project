@@ -47,3 +47,4 @@ MonoBehaviour:
   alarmSounded: 0
   nextLevel: {fileID: 102900000, guid: 7ee46e537eecc88479b8aba206628549, type: 3}
   graceTimeAtEndOfLevel: 3
+  secondsBeforeShowingDeathMenu: 1

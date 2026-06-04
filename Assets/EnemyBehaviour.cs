@@ -64,15 +64,5 @@ public class EnemyBehaviour : MonoBehaviour
         }
     }
 
-    protected void OnCollisionEnter(Collision thisCollision)
-    {
-        var theirGameObject = thisCollision.gameObject;
-        if (theirGameObject.GetComponent<PlayerBehaviour>())
-        {
-            if (theirGameObject.GetComponent<HealthSystem>() is var theirHealth && theirHealth)
-            {
-                theirHealth.TakeDamage(1); //TODO de-magic
-            }
-        }
-    }
+    
 }

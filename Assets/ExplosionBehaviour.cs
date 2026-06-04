@@ -4,6 +4,7 @@ public class ExplosionBehaviour : MonoBehaviour
 {
     public float secondsToExist;
     public GameObject soundObject;
+    public float damage;
 
     private float m_secondsWeHaveBeenAlive;
     private readonly Vector3 m_maxScale = Vector3.one * 5;
@@ -33,7 +34,7 @@ public class ExplosionBehaviour : MonoBehaviour
     {
         if (victim.gameObject.GetComponent<HealthSystem>() is var theirHealth and not null)
         {
-            theirHealth.TakeDamage(10); // TODO de-magic
+            theirHealth.TakeDamage(damage);
         }
     }
 }

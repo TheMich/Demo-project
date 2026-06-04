@@ -7,23 +7,16 @@ public class CanvasBehaviour : MonoBehaviour
 {
     public SceneAsset firstScene;
     public GameObject mainMenu;
-    public GameObject creditsMenu;
+    public GameObject creditsMenu; // TODO check if ok to remove
 
     private GameObject m_currentMenu;
 
     private void Awake()
     {
-        References.canvas = gameObject;
+        References.canvas = this;
         m_currentMenu = null;
     }
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-
-    }
-
-    // Update is called once per frame
     void Update()
     {
         if (Input.GetButtonDown("Menu"))
@@ -52,6 +45,11 @@ public class CanvasBehaviour : MonoBehaviour
     public void Quit()
     {
         Application.Quit();
+    }
+
+    public void ShowMainMenu()
+    {
+        ShowMenu(mainMenu);
     }
 
     public void ShowMenu(GameObject menuToShow)
