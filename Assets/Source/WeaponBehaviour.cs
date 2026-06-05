@@ -1,4 +1,3 @@
-using Unity.VisualScripting;
 using UnityEngine;
 
 [RequireComponent(typeof(AudioSource))]
@@ -13,14 +12,12 @@ public class WeaponBehaviour : MonoBehaviour
     private float m_secondsSinceLastShot;
     private AudioSource m_audioSource;
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         m_secondsSinceLastShot = secondsBetweenShots;
         m_audioSource = GetComponent<AudioSource>();
     }
 
-    // Update is called once per frame
     void Update()
     {
         m_secondsSinceLastShot += Time.deltaTime;
@@ -31,7 +28,8 @@ public class WeaponBehaviour : MonoBehaviour
         if (References.thePlayer is var player and not null)
         {
             player.weapons.Add(this);
-            transform.SetPositionAndRotation(player.transform.position, player.transform.rotation);
+            transform.SetPositionAndRotation(player.transform.position,
+                player.transform.rotation);
             transform.SetParent(player.transform);
             player.SelectLatestWeapon();
         }
@@ -40,7 +38,6 @@ public class WeaponBehaviour : MonoBehaviour
 
     public void Fire(Vector3 targetPosition)
     {
-
         if (m_secondsSinceLastShot >= secondsBetweenShots)
         {
             m_secondsSinceLastShot = 0;
@@ -57,9 +54,9 @@ public class WeaponBehaviour : MonoBehaviour
 
             for (int i = 0; i < numberOfProjectiles; i++)
             {
-                //var alteredRotation = transform.rotation * Quaternion.Euler(0f, Random.Range(-accuracy, accuracy), 0f);
+
                 var newBullet = Instantiate(bulletPrefab,
-                transform.position + transform.forward, transform.rotation);
+                    transform.position + transform.forward, transform.rotation);
                 newBullet.name = "Bullet " + i.ToString();
 
                 Vector3 alteredPosition = targetPosition;

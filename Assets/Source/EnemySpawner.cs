@@ -21,7 +21,6 @@ public class EnemySpawner : MonoBehaviour
         References.spawners.Remove(this);
     }
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         m_secondsSinceLastSpawn = 0;
@@ -32,7 +31,9 @@ public class EnemySpawner : MonoBehaviour
     void FixedUpdate()
     {
         m_secondsSinceLastSpawn += Time.fixedDeltaTime;
-        if (References.levelManager.alarmSounded && m_secondsSinceLastSpawn >= secondsBetweenSpawns && m_spawnCount < enemiesToSpawn)
+        if (References.levelManager.alarmSounded 
+            && m_secondsSinceLastSpawn >= secondsBetweenSpawns 
+            && m_spawnCount < enemiesToSpawn)
         {
             SpawnEnemy();
         }

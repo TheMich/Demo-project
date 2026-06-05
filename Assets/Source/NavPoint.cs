@@ -18,10 +18,4 @@ public class NavPoint : MonoBehaviour
     {
         References.navPoints.Remove(this);
     }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }

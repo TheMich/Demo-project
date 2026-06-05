@@ -12,7 +12,6 @@ public class DeathEffect : MonoBehaviour
     private float m_secondsLeft;
     private AudioSource m_audioSource;
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         m_audioSource = GetComponent<AudioSource>();
@@ -21,7 +20,6 @@ public class DeathEffect : MonoBehaviour
         m_secondsLeft = duration;
     }
 
-    // Update is called once per frame
     void Update()
     {
         m_secondsLeft -= Time.deltaTime;

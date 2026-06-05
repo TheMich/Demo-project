@@ -45,17 +45,14 @@ public class HealthSystem : MonoBehaviour
         }
     }
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         // Create our health panel on the canvas
         var healthBarObject = Instantiate(healthBarPrefab, References.canvas.transform);
         m_healthBar = healthBarObject.GetComponent<HealthBar>();
         m_currentHealth = maxHealth;
-
     }
 
-    // Update is called once per frame
     void Update()
     {
         // make our healthbar reflect our health - myHealthBar.ShowHealth()

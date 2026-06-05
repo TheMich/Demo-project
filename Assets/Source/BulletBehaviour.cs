@@ -20,7 +20,6 @@ public class BulletBehaviour : MonoBehaviour
         m_secondsUntilDestroyed = lifetimeInSeconds;
     }
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         var rigidBody = GetComponent<Rigidbody>();
@@ -29,8 +28,6 @@ public class BulletBehaviour : MonoBehaviour
             rigidBody.linearVelocity = bulletSpeed * transform.forward;
         }
     }
-
-    // Update is called once per frame
     protected virtual void Update()
     {
         m_secondsUntilDestroyed -= Time.deltaTime;

@@ -4,7 +4,6 @@ using UnityEngine.SceneManagement;
 
 public class LevelManager : MonoBehaviour
 {
-
     public bool alarmSounded;
     public SceneAsset nextLevel;
     public float graceTimeAtEndOfLevel;

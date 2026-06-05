@@ -1,5 +1,4 @@
 using System.Collections.Generic;
-using UnityEditor;
 using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody))]
@@ -18,13 +17,11 @@ public class PlayerBehaviour : MonoBehaviour
         References.thePlayer = this;
     }
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         m_thisRigidBody = GetComponent<Rigidbody>();
     }
 
-    // Update is called once per frame
     void Update()
     {
         // Movement
@@ -43,6 +40,7 @@ public class PlayerBehaviour : MonoBehaviour
             // Use the nearest useable
             // TODO think if it is more efficient to instead maintain order of list at each update,
             // so that action here will be O(1) instead of O(n)
+            // Might not be worth it though since list should be small in size anyway
             Useable nearest = null;
             float nearestDistance = 2; // TODO de-magic
             foreach (var item in References.useables)
@@ -84,7 +82,8 @@ public class PlayerBehaviour : MonoBehaviour
     
     private void ChangeWeaponIndex(int index)
     {
-        // original tutorial code used a for-loop to check for activation, but we can simply use an additional index instead
+        // original tutorial code used a for-loop to check for activation,
+        // but we can simply use an additional index instead
         var oldIndex = m_selectedWeaponIndex;
         m_selectedWeaponIndex = index;
         if (m_selectedWeaponIndex >= weapons.Count)
@@ -102,21 +101,4 @@ public class PlayerBehaviour : MonoBehaviour
         playerPlane.Raycast(rayFromCameraToCursor, out float distanceFromCamera);
         return rayFromCameraToCursor.GetPoint(distanceFromCamera);
     }
-
-    //private void OnTriggerEnter(Collider other)
-    //{
-    //    var weapon = other.GetComponentInParent<WeaponBehaviour>();
-    //    if (weapon)
-    //    {
-    //        PickUp(weapon);
-    //    }
-    //}
-
-    //private void PickUp(WeaponBehaviour weapon)
-    //{
-    //    weapons.Add(weapon);
-    //    weapon.transform.SetPositionAndRotation(transform.position, transform.rotation);
-    //    weapon.transform.SetParent(transform);
-    //    ChangeWeaponIndex(weapons.Count - 1);
-    //}
 }

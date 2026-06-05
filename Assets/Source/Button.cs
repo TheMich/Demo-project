@@ -11,14 +11,12 @@ public class Button : MonoBehaviour
     private RectTransform m_rectangle;
     private Image m_image;
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         m_rectangle = GetComponent<RectTransform>();
         m_image = GetComponent<Image>();
     }
 
-    // Update is called once per frame
     void Update()
     {
         // If mouse is within our rectangle, clicking should do something

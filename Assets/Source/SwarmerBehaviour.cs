@@ -7,7 +7,8 @@ public class SwarmerBehaviour : EnemyBehaviour
     protected void OnCollisionEnter(Collision thisCollision)
     {
         var theirGameObject = thisCollision.gameObject;
-        if (References.thePlayer && theirGameObject == References.thePlayer.gameObject)
+        var potentialPlayer = theirGameObject.GetComponent<PlayerBehaviour>();
+        if (potentialPlayer == References.thePlayer)
         {
             Instantiate(explosionPrefab, transform.position, transform.rotation);
             Destroy(gameObject);

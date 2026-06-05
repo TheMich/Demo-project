@@ -9,14 +9,12 @@ public class ExplosionBehaviour : MonoBehaviour
     private float m_secondsWeHaveBeenAlive;
     private readonly Vector3 m_maxScale = Vector3.one * 5;
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         m_secondsWeHaveBeenAlive = 0;
         Instantiate(soundObject, transform.position, transform.rotation);
     }
 
-    // Update is called once per frame
     void FixedUpdate()
     {
         m_secondsWeHaveBeenAlive += Time.fixedDeltaTime;

@@ -37,7 +37,8 @@ public class GuardBehaviour : EnemyBehaviour
 
     protected bool CanSeeVector(Vector3 directionToPlayer)
     {
-        return !Physics.Raycast(transform.position, directionToPlayer, directionToPlayer.magnitude, References.wallsLayer);
+        return !Physics.Raycast(transform.position, directionToPlayer,
+            directionToPlayer.magnitude, References.wallsLayer);
     }
 
     override protected void Update()
@@ -53,14 +54,15 @@ public class GuardBehaviour : EnemyBehaviour
                     m_secondsSeeingPlayer += Time.deltaTime;
                     transform.LookAt(playerPosition);
                     if (m_secondsSeeingPlayer > reactionTime)
-                    { 
+                    {
                         myWeapon.Fire(playerPosition);
                     }
-                } else
+                }
+                else
                 {
                     m_secondsSeeingPlayer = 0;
                 }
-            
+
             }
             else
             {
@@ -77,7 +79,8 @@ public class GuardBehaviour : EnemyBehaviour
                 // Check if we can see the player
                 if (Vector3.Distance(transform.position, playerPosition) <= visionRange
                     && Vector3.Angle(transform.forward, directionToPlayer) <= visionConeAngle
-                    && !Physics.Raycast(transform.position, directionToPlayer, directionToPlayer.magnitude, References.wallsLayer)) // if we don't hit a wall
+                    && !Physics.Raycast(transform.position, directionToPlayer,
+                    directionToPlayer.magnitude, References.wallsLayer)) // if we don't hit a wall
                 {
                     SetAlert(true);
                 }
