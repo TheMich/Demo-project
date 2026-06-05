@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody))]
@@ -14,7 +15,7 @@ public class PlayerBehaviour : MonoBehaviour
 
     private void Awake()
     {
-        References.thePlayer = gameObject;
+        References.thePlayer = this;
     }
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -36,6 +37,29 @@ public class PlayerBehaviour : MonoBehaviour
         Vector3 lookAtPosition = cursorPosition;
         transform.LookAt(lookAtPosition);
 
+        // Useables
+        if (Input.GetButtonDown("Use"))
+        {
+            // Use the nearest useable
+            // TODO think if it is more efficient to instead maintain order of list at each update,
+            // so that action here will be O(1) instead of O(n)
+            Useable nearest = null;
+            float nearestDistance = 2; // TODO de-magic
+            foreach (var item in References.useables)
+            {
+                var distance = Vector3.Distance(transform.position, item.transform.position);
+                if (distance < nearestDistance)
+                {
+                    nearestDistance = distance;
+                    nearest = item;
+                }
+            }
+            if (nearest)
+            {
+                nearest.Use();
+            }
+        }
+
         // Firing
         // need to check we have at least one weapon
         if (weapons.Count > 0)
@@ -53,6 +77,10 @@ public class PlayerBehaviour : MonoBehaviour
         }
     }
 
+    public void SelectLatestWeapon()
+    {
+        ChangeWeaponIndex(weapons.Count - 1);
+    }
     
     private void ChangeWeaponIndex(int index)
     {
@@ -75,20 +103,20 @@ public class PlayerBehaviour : MonoBehaviour
         return rayFromCameraToCursor.GetPoint(distanceFromCamera);
     }
 
-    private void OnTriggerEnter(Collider other)
-    {
-        var weapon = other.GetComponentInParent<WeaponBehaviour>();
-        if (weapon)
-        {
-            PickUp(weapon);
-        }
-    }
+    //private void OnTriggerEnter(Collider other)
+    //{
+    //    var weapon = other.GetComponentInParent<WeaponBehaviour>();
+    //    if (weapon)
+    //    {
+    //        PickUp(weapon);
+    //    }
+    //}
 
-    private void PickUp(WeaponBehaviour weapon)
-    {
-        weapons.Add(weapon);
-        weapon.transform.SetPositionAndRotation(transform.position, transform.rotation);
-        weapon.transform.SetParent(transform);
-        ChangeWeaponIndex(weapons.Count - 1);
-    }
+    //private void PickUp(WeaponBehaviour weapon)
+    //{
+    //    weapons.Add(weapon);
+    //    weapon.transform.SetPositionAndRotation(transform.position, transform.rotation);
+    //    weapon.transform.SetParent(transform);
+    //    ChangeWeaponIndex(weapons.Count - 1);
+    //}
 }

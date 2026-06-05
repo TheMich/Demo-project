@@ -139,6 +139,7 @@ GameObject:
   - component: {fileID: 6977414710713705188}
   - component: {fileID: 6936366185751284069}
   - component: {fileID: 1393171651999836785}
+  - component: {fileID: 1237465084342987404}
   - component: {fileID: -8340286466659671434}
   - component: {fileID: 22843917994871052}
   m_Layer: 8
@@ -228,6 +229,34 @@ MonoBehaviour:
   reactionTime: 0.5
   myLight: {fileID: 5222769321206189840}
   myWeapon: {fileID: 3244638065543060969}
+--- !u!114 &1237465084342987404
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2742750655051787725}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f53948f135b5ae247a91a0c7cac71483, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Useable
+  whenUsed:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1393171651999836785}
+        m_TargetAssemblyTypeName: GuardBehaviour, Assembly-CSharp
+        m_MethodName: KnockoutAttempt
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  canBeReused: 0
 --- !u!114 &-8340286466659671434
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -27,6 +27,11 @@ public class HealthSystem : MonoBehaviour
         }
     }
 
+    public void KillMe()
+    {
+        TakeDamage(maxHealth);
+    }
+
     private void ShowDeathEffect(GameObject deathEffect)
     {
         Instantiate(deathEffect, transform.position, transform.rotation);

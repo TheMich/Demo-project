@@ -3,7 +3,7 @@ using UnityEngine;
 
 public static class References
 {
-    public static GameObject thePlayer;
+    public static PlayerBehaviour thePlayer;
     public static CanvasBehaviour canvas;
     public static Screenshake screenshake;
     public static LevelManager levelManager;
@@ -14,6 +14,7 @@ public static class References
     public static List<NavPoint> navPoints = new();
     public static List<EnemySpawner> spawners = new();
     public static List<EnemyBehaviour> allEnemies = new();
+    public static List<Useable> useables = new();
 
     public const float maxDistanceInALevel = 1000;
 }

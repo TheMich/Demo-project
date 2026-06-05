@@ -26,6 +26,18 @@ public class WeaponBehaviour : MonoBehaviour
         m_secondsSinceLastShot += Time.deltaTime;
     }
 
+    public void BePickedUpByPlayer()
+    {
+        if (References.thePlayer is var player and not null)
+        {
+            player.weapons.Add(this);
+            transform.SetPositionAndRotation(player.transform.position, player.transform.rotation);
+            transform.SetParent(player.transform);
+            player.SelectLatestWeapon();
+        }
+
+    }
+
     public void Fire(Vector3 targetPosition)
     {
 

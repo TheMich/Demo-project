@@ -1,6 +1,7 @@
 using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody))]
+[RequireComponent(typeof(HealthSystem))]
 public class GuardBehaviour : EnemyBehaviour
 {
     public float visionRange;
@@ -12,6 +13,14 @@ public class GuardBehaviour : EnemyBehaviour
     public WeaponBehaviour myWeapon;
 
     private float m_secondsSeeingPlayer = 0;
+
+    public void KnockoutAttempt()
+    {
+        if (GetComponent<HealthSystem>() is var healthSystem and not null && !alerted)
+        {
+            healthSystem.KillMe();
+        }
+    }
 
     override protected void Start()
     {
